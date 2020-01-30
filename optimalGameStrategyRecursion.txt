@@ -1,0 +1,29 @@
+#include<iostream> 
+using namespace std; 
+
+long long int optimalGame(long long int a[],long long int i,long long int j){
+	// base case 
+	if(i==j){ 
+		return a[i]; 
+	} 
+	if(i+1==j){ 
+		return max(a[i],a[j]); 
+	} 
+	// rec case // if user takes 1st coin 
+	long long int vi=a[i]+min(optimalGame(a,i+1,j-1),optimalGame(a,i+2,j)); 
+	// if user takes the last coin 
+	long long int vj=a[j]+min(optimalGame(a,i,j-2),optimalGame(a,i+1,j-1)); 
+	// return max of the two choices made 
+	return max(vi,vj); 
+} 
+
+int main() { 
+	long long int n; cin>>n; 
+	long long int a[n]; 
+	for(long long int i=0;i<n;i++){ 
+		cin>>a[i]; 
+	} 
+	//long long int vi=0,vj=0; 
+	cout<<optimalGame(a,0,n-1); 
+	return 0; 
+}
