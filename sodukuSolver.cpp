@@ -39,12 +39,12 @@ bool solveSoduku(int mat[9][9],int i,int j,int n){
     }
     // if col ends
     if(j==n){
-        solveSoduku(mat,i+1,0,n);
+        return solveSoduku(mat,i+1,0,n);
     }
     // if already a number presents
 
     if(mat[i][j]!=0){
-        solveSoduku(mat,i,j+1,n);
+        return solveSoduku(mat,i,j+1,n);
     }
 
     // rec case
